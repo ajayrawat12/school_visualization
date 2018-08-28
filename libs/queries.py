@@ -5,7 +5,8 @@ from models.school_db import Student
 
 def get_students(class_id, sec_id):
         # get users of a repo
-    data = scl_session.query(Student).filter(and_(class_id=class_id, section_id=sec_id)).all()
+    data = scl_session.query(Student).filter(and_(Student.class_id == class_id,
+                                                  Student.section_id == sec_id)).first()
 
     stu_data = []
     if data:
